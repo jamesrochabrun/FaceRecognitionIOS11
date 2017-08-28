@@ -15,6 +15,8 @@
 		7B4DA2041F52490A0037584A /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA2031F52490A0037584A /* BaseCell.swift */; };
 		7B4DA2061F52491E0037584A /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA2051F52491E0037584A /* PageCell.swift */; };
 		7B4DA2081F524E2A0037584A /* PageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA2071F524E2A0037584A /* PageCellViewModel.swift */; };
+		7B4DA20A1F5391150037584A /* PageControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA2091F5391150037584A /* PageControllerViewModel.swift */; };
+		7B4DA20C1F539A6F0037584A /* FaceBoxable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA20B1F539A6F0037584A /* FaceBoxable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		7B4DA2031F52490A0037584A /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		7B4DA2051F52491E0037584A /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		7B4DA2071F524E2A0037584A /* PageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCellViewModel.swift; sourceTree = "<group>"; };
+		7B4DA2091F5391150037584A /* PageControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerViewModel.swift; sourceTree = "<group>"; };
+		7B4DA20B1F539A6F0037584A /* FaceBoxable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBoxable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				7B4DA2071F524E2A0037584A /* PageCellViewModel.swift */,
+				7B4DA2091F5391150037584A /* PageControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				7B4DA2011F5244890037584A /* Reusable.swift */,
+				7B4DA20B1F539A6F0037584A /* FaceBoxable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -168,11 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B4DA20C1F539A6F0037584A /* FaceBoxable.swift in Sources */,
 				7B4DA2041F52490A0037584A /* BaseCell.swift in Sources */,
 				7B4DA2061F52491E0037584A /* PageCell.swift in Sources */,
 				7B4DA2021F5244890037584A /* Reusable.swift in Sources */,
 				7B4DA1EF1F5239170037584A /* PageController.swift in Sources */,
 				7B4DA1ED1F5239160037584A /* AppDelegate.swift in Sources */,
+				7B4DA20A1F5391150037584A /* PageControllerViewModel.swift in Sources */,
 				7B4DA2081F524E2A0037584A /* PageCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

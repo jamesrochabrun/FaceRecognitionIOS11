@@ -7,8 +7,7 @@
 import UIKit
 import Vision
 
-
-class PageCell: BaseCell {
+class PageCell: BaseCell, FaceBoxable {
     
     //MARK: properties
     var detectedFaces: [UIView]?
@@ -51,6 +50,7 @@ class PageCell: BaseCell {
     }
     //MARK: Tap Event
     @objc fileprivate func handleTap() {
+        
         if detectedFaces?.count ?? 0 > 0 {
             detectedFaces?.forEach({$0.removeFromSuperview()})
             detectedFaces?.removeAll()
@@ -61,52 +61,48 @@ class PageCell: BaseCell {
     }
 }
 
-//MARK: Detection methods
+//MARK: Detection method Core
+
 extension PageCell {
     
     private func detectFaces() {
+        let request = self.createFaceRectangleRequest()
+        self.performImageRequestHandler(from: request)
+    }
+    
+    /* VNDetectFaceRectanglesRequest :
+     @brief A request that will detect faces in an image.
+     @details This request will generate VNFaceObservation objects with defined a boundingBox.
+     */
+    func createFaceRectangleRequest() -> VNDetectFaceRectanglesRequest {
         
-        guard let image = photoImageView.image else { return }
-        
-        let imageScaledHeight = frame.size.width / image.size.width * image.size.height
-        
-        let request = VNDetectFaceRectanglesRequest { (req, err) in
-            
+        //Asynchronous request
+        return VNDetectFaceRectanglesRequest { (req, err) in
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
             }
-            
             self.detectedFaces = []
+            //MARK: handles VNFaceObservation
+            //MARK: the request.results returns an array of ANY that need to be Downcasted to a VNFaceObservation
             req.results?.forEach({ (res) in
                 
                 guard let faceObservation = res as? VNFaceObservation else { return }
-                DispatchQueue.main.async {
-                    let rect = faceObservation.boundingBox
-                    let transformFlip = CGAffineTransform.init(scaleX: 1, y: -1).translatedBy(x: 0, y: -imageScaledHeight - self.frame.height / 2 + imageScaledHeight / 2)
-                    let transformScale = CGAffineTransform.identity.scaledBy(x: self.frame.width, y: imageScaledHeight)
-                    let converted_rect = rect.applying(transformScale).applying(transformFlip)
-                    
-                    let redView = UIView()
-                    redView.layer.borderColor = UIColor.red.cgColor
-                    redView.layer.borderWidth = 2
-                    redView.layer.cornerRadius = 8
-                    redView.frame = converted_rect
-                    redView.backgroundColor = UIColor(white: 1, alpha: 0.5)
-                    self.addSubview(redView)
-                    
-                    redView.layer.transform = CATransform3DMakeScale(0, 0, 0)
-                    
-                    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                        redView.layer.transform = CATransform3DMakeScale(1, 1, 1)
-                    }, completion: nil)
-                    
-                    self.detectedFaces?.append(redView)
-                }
+                self.handleUIFor(faceObservation: faceObservation)
             })
         }
-        
+    }
+    
+    //MARK: handles VNImageRequestHandler
+    func performImageRequestHandler(from request: VNDetectFaceRectanglesRequest) {
         DispatchQueue.global(qos: .userInitiated).async {
-            guard let cgImage = image.cgImage else { return }
+            
+            guard let cgImage = self.viewModel!.cgImage() else { return }
+            /*!
+             @brief initWithCVPixelBuffer:options creates a VNImageRequestHandler to be used for performing requests against the image passed in as buffer.
+             
+             @param pixelBuffer A CVPixelBuffer containing the image to be used for performing the requests. The content of the buffer cannot be modified for the lifetime of the VNImageRequestHandler.
+             
+             */
             let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
             do {
                 try requestHandler.perform([request])
@@ -115,24 +111,30 @@ extension PageCell {
             }
         }
     }
+    
+    //MARK: HelperMethod handles VNFaceObservation results boundingBox
+    /*!
+     @class VNFaceObservation
+     @superclass VNObservation
+     @brief VNFaceObservation is the result of a face detection request or derivatives like a face landmark request.
+     @discussion The properties filled in this obervation depend on the request being performed. For instance if just a VNDetectFaceRectanglesRequest was performed the landmarks will not be populated. VNFaceObservation are also used as inputs to other request as defined by the VNFaceObservationAccepting protocol. An example would be the VNDetectFaceLandmarksRequest. This can be helpful for instance if the face rectangles in an image are not derived from a VNDetectFaceRectanglesRequest but instead come from other sources like EXIF or other face detectors. In that case the client of the API creates a VNFaceObservation with the boundingBox (in normalized coordinates) that were based on those detected faces.
+     
+     */
+    func handleUIFor(faceObservation: VNFaceObservation) {
+        
+        DispatchQueue.main.async {
+            /*!
+             @brief The bounding box of the detected object. The coordinates are normalized to the dimensions of the processed image, with the origin at the image's lower-left corner.
+             */
+            let boundingBox = faceObservation.boundingBox
+            let faceBox = self.createAnimatedBoxForFace(with: self.viewModel!.photoImage(), and: boundingBox)
+            self.addSubview(faceBox)
+            self.detectedFaces?.append(faceBox)
+        }
+    }
 }
 
-struct PageCellViewModel {
-    
-    private let image: UIImage
-    //Helper method
-    init(photo: UIImage) {
-        self.image = photo
-    }
-    
-    func photoImage() -> UIImage {
-        return self.image
-    }
-    
-    func cgImage() -> CGImage? {
-        return self.image.cgImage
-    }
-}
+
 
 
 
