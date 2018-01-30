@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0907A8B82020F8C600E18BFA /* FaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8B72020F8C600E18BFA /* FaceDetector.swift */; };
+		0907A8BD20211F7600E18BFA /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8BC20211F7600E18BFA /* CameraVC.swift */; };
+		0907A8BF20211F7900E18BFA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8BE20211F7900E18BFA /* CameraView.swift */; };
+		0907A8C120211F7E00E18BFA /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8C020211F7E00E18BFA /* FeedVC.swift */; };
+		0907A8C320211F8200E18BFA /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8C220211F8200E18BFA /* MainVC.swift */; };
+		0907A8C520211F8300E18BFA /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8C420211F8300E18BFA /* PhotoCaptureDelegate.swift */; };
+		0907A8C720211F8600E18BFA /* PostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8C620211F8600E18BFA /* PostsVC.swift */; };
+		0907A8C9202120FA00E18BFA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8C8202120FA00E18BFA /* Extensions.swift */; };
 		7B4DA1ED1F5239160037584A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA1EC1F5239160037584A /* AppDelegate.swift */; };
 		7B4DA1EF1F5239170037584A /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA1EE1F5239170037584A /* PageController.swift */; };
 		7B4DA1F41F5239180037584A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B4DA1F31F5239180037584A /* Assets.xcassets */; };
@@ -22,6 +29,13 @@
 
 /* Begin PBXFileReference section */
 		0907A8B72020F8C600E18BFA /* FaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetector.swift; sourceTree = "<group>"; };
+		0907A8BC20211F7600E18BFA /* CameraVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		0907A8BE20211F7900E18BFA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		0907A8C020211F7E00E18BFA /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		0907A8C220211F8200E18BFA /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		0907A8C420211F8300E18BFA /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		0907A8C620211F8600E18BFA /* PostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsVC.swift; sourceTree = "<group>"; };
+		0907A8C8202120FA00E18BFA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7B4DA1E91F5239160037584A /* FaceRecognitionIOS11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceRecognitionIOS11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4DA1EC1F5239160037584A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B4DA1EE1F5239170037584A /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
@@ -47,6 +61,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0907A8B920211F4800E18BFA /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				0907A8C220211F8200E18BFA /* MainVC.swift */,
+				0907A8C620211F8600E18BFA /* PostsVC.swift */,
+				0907A8C420211F8300E18BFA /* PhotoCaptureDelegate.swift */,
+				0907A8C020211F7E00E18BFA /* FeedVC.swift */,
+				0907A8BC20211F7600E18BFA /* CameraVC.swift */,
+				0907A8BE20211F7900E18BFA /* CameraView.swift */,
+				0907A8C8202120FA00E18BFA /* Extensions.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		7B4DA1E01F5239160037584A = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				7B4DA1EC1F5239160037584A /* AppDelegate.swift */,
+				0907A8B920211F4800E18BFA /* Camera */,
 				7B4DA2001F52445D0037584A /* Protocols */,
 				7B4DA1FF1F5243F30037584A /* ViewModel */,
 				7B4DA1FE1F5243ED0037584A /* View */,
@@ -177,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0907A8C120211F7E00E18BFA /* FeedVC.swift in Sources */,
 				7B4DA20C1F539A6F0037584A /* FaceBoxable.swift in Sources */,
 				7B4DA2041F52490A0037584A /* BaseCell.swift in Sources */,
 				7B4DA2061F52491E0037584A /* PageCell.swift in Sources */,
@@ -184,8 +214,14 @@
 				7B4DA1EF1F5239170037584A /* PageController.swift in Sources */,
 				7B4DA1ED1F5239160037584A /* AppDelegate.swift in Sources */,
 				7B4DA20A1F5391150037584A /* PageControllerViewModel.swift in Sources */,
+				0907A8C720211F8600E18BFA /* PostsVC.swift in Sources */,
+				0907A8BF20211F7900E18BFA /* CameraView.swift in Sources */,
+				0907A8BD20211F7600E18BFA /* CameraVC.swift in Sources */,
+				0907A8C9202120FA00E18BFA /* Extensions.swift in Sources */,
 				0907A8B82020F8C600E18BFA /* FaceDetector.swift in Sources */,
 				7B4DA2081F524E2A0037584A /* PageCellViewModel.swift in Sources */,
+				0907A8C520211F8300E18BFA /* PhotoCaptureDelegate.swift in Sources */,
+				0907A8C320211F8200E18BFA /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
