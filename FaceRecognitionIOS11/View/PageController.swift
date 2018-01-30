@@ -9,7 +9,7 @@ import UIKit
 
 class PageController: UICollectionViewController {
     
-    private var images: [UIImage] =  [ #imageLiteral(resourceName: "p1"), #imageLiteral(resourceName: "p2"), #imageLiteral(resourceName: "p3"), #imageLiteral(resourceName: "p4"),  #imageLiteral(resourceName: "people2"), #imageLiteral(resourceName: "grid1"), #imageLiteral(resourceName: "family1"), #imageLiteral(resourceName: "family2"), #imageLiteral(resourceName: "people1"), #imageLiteral(resourceName: "barza")]
+    private var images: [UIImage] =  [ #imageLiteral(resourceName: "p1"), #imageLiteral(resourceName: "p6"), #imageLiteral(resourceName: "p7"), #imageLiteral(resourceName: "p9"), #imageLiteral(resourceName: "p10"), #imageLiteral(resourceName: "p2"), #imageLiteral(resourceName: "p3"), #imageLiteral(resourceName: "p4"), #imageLiteral(resourceName: "people2"), #imageLiteral(resourceName: "grid1"), #imageLiteral(resourceName: "family1"), #imageLiteral(resourceName: "family2"), #imageLiteral(resourceName: "people1")]
     private lazy var viewModel = PageControllerViewModel(images: self.images)
     
     override func viewDidLoad() {

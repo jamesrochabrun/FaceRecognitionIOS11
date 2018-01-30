@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0907A8B82020F8C600E18BFA /* FaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907A8B72020F8C600E18BFA /* FaceDetector.swift */; };
 		7B4DA1ED1F5239160037584A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA1EC1F5239160037584A /* AppDelegate.swift */; };
 		7B4DA1EF1F5239170037584A /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DA1EE1F5239170037584A /* PageController.swift */; };
 		7B4DA1F41F5239180037584A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B4DA1F31F5239180037584A /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0907A8B72020F8C600E18BFA /* FaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetector.swift; sourceTree = "<group>"; };
 		7B4DA1E91F5239160037584A /* FaceRecognitionIOS11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceRecognitionIOS11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B4DA1EC1F5239160037584A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B4DA1EE1F5239170037584A /* PageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				7B4DA2011F5244890037584A /* Reusable.swift */,
 				7B4DA20B1F539A6F0037584A /* FaceBoxable.swift */,
+				0907A8B72020F8C600E18BFA /* FaceDetector.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				7B4DA1EF1F5239170037584A /* PageController.swift in Sources */,
 				7B4DA1ED1F5239160037584A /* AppDelegate.swift in Sources */,
 				7B4DA20A1F5391150037584A /* PageControllerViewModel.swift in Sources */,
+				0907A8B82020F8C600E18BFA /* FaceDetector.swift in Sources */,
 				7B4DA2081F524E2A0037584A /* PageCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,7 +318,7 @@
 				DEVELOPMENT_TEAM = CQ45U4X9K3;
 				INFOPLIST_FILE = FaceRecognitionIOS11/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.FaceRecognitionIOS11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.james.FaceRecognitionIOS11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -329,7 +333,7 @@
 				DEVELOPMENT_TEAM = CQ45U4X9K3;
 				INFOPLIST_FILE = FaceRecognitionIOS11/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.speedelo.FaceRecognitionIOS11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.james.FaceRecognitionIOS11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

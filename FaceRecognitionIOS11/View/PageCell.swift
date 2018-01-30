@@ -36,21 +36,36 @@ class PageCell: BaseCell, FaceBoxable {
         return iv
     }()
     
-    override func setUpViews() {
-        
-        addSubview(photoImageView)
-        photoImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        photoImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        photoImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        addSubview(activityIndicatorView)
-        activityIndicatorView.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
-        activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-    }
-    //MARK: Tap Event
-    @objc fileprivate func handleTap() {
-        
+    lazy var detectRectangleButton: UIButton = {
+        let b = UIButton()
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.setTitle("Detect Faces", for: .normal)
+        b.backgroundColor = #colorLiteral(red: 0, green: 0.9269914031, blue: 0.6802368164, alpha: 1)
+        b.addTarget(self, action: #selector(showRectangles), for: .touchUpInside)
+        b.setTitleColor(.black, for: .normal)
+        return b
+    }()
+    
+    lazy var detectFaceDetailButton: UIButton = {
+        let b = UIButton()
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.setTitle("Detect Face Details", for: .normal)
+        b.backgroundColor = #colorLiteral(red: 0, green: 0.9269914031, blue: 0.6802368164, alpha: 1)
+        b.setTitleColor(.black, for: .normal)
+        b.addTarget(self, action: #selector(showFaceDetails), for: .touchUpInside)
+        return b
+    }()
+    
+    let countLabel: UILabel = {
+        let l = UILabel()
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.textColor = .white
+        l.textAlignment = .center
+        return l
+    }()
+    
+    // MARK: - Use this method to display rectangles on top of faces
+    @objc func showRectangles() {
         if detectedFaces?.count ?? 0 > 0 {
             detectedFaces?.forEach({$0.removeFromSuperview()})
             detectedFaces?.removeAll()
@@ -58,6 +73,61 @@ class PageCell: BaseCell, FaceBoxable {
             activityIndicatorView.startAnimating()
             detectFaces()
         }
+    }
+    
+    // MARK: - Use this method to display details on faces
+    
+    @objc func showFaceDetails() {
+        activityIndicatorView.startAnimating()
+        let faceDetector = FaceDetector()
+        faceDetector.delegate = self
+        guard let image = self.photoImageView.image else { return }
+        faceDetector.highlightFaces(for: image) { (resultImage) in
+            self.photoImageView.image = resultImage
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+            }
+        }
+    }
+    
+    override func setUpViews() {
+        
+        addSubview(photoImageView)
+        addSubview(detectRectangleButton)
+        addSubview(detectFaceDetailButton)
+        addSubview(activityIndicatorView)
+        addSubview(countLabel)
+        
+        NSLayoutConstraint.activate([
+            
+            photoImageView.leftAnchor.constraint(equalTo: leftAnchor),
+            photoImageView.topAnchor.constraint(equalTo: topAnchor),
+            photoImageView.rightAnchor.constraint(equalTo: rightAnchor),
+            photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            detectRectangleButton.widthAnchor.constraint(equalToConstant: self.frame.width),
+            detectRectangleButton.heightAnchor.constraint(equalToConstant: 44),
+            detectRectangleButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            detectRectangleButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            
+            detectFaceDetailButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            detectFaceDetailButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            detectFaceDetailButton.widthAnchor.constraint(equalToConstant: self.frame.width),
+            detectFaceDetailButton.heightAnchor.constraint(equalToConstant: 44),
+            
+            countLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            countLabel.bottomAnchor.constraint(equalTo: detectFaceDetailButton.topAnchor, constant: -40),
+            countLabel.widthAnchor.constraint(equalToConstant: self.frame.width)
+            ])
+
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        countLabel.text = nil
     }
 }
 
@@ -134,7 +204,11 @@ extension PageCell {
     }
 }
 
-
+extension PageCell: FaceDetectorDelegate {
+    func facesDetected(_ faces: Int) {
+        self.countLabel.text = "Detailed Faces detected = \(faces)"
+    }
+}
 
 
 
