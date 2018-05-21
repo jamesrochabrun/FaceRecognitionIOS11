@@ -17,14 +17,13 @@ class MainVC: UIViewController {
         return sv
     }()
     
-    lazy var feedVC: FeedVC = {
-        let fVC = FeedVC()
-        fVC.view.backgroundColor = .yellow
-        return fVC
+    lazy var cameraVC: CameraVC = {
+        let cVC = CameraVC()
+        return cVC
     }()
     
-    lazy var cameraVC : CameraVC = {
-        let cVC = CameraVC()
+    lazy var postVC : PostsVC = {
+        let cVC = PostsVC()
         cVC.view.backgroundColor = .red
         var frame = cVC.view.frame
         frame.origin.x = self.view.frame.width
@@ -32,10 +31,9 @@ class MainVC: UIViewController {
         return cVC
     }()
     
-    lazy var postVC: PostsVC = {
-        let pVC = PostsVC()
-        pVC.view.backgroundColor = .green
-        var frame = pVC.view.frame
+    lazy var pageController: PageController = {
+        let pVC = PageController(collectionViewLayout: UICollectionViewFlowLayout())
+        var frame = cameraVC.view.frame
         frame.origin.x = self.view.frame.width * 2
         pVC.view.frame = frame
         return pVC
@@ -45,9 +43,9 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(menuScrollView)
-        addViewControllerToMenu(feedVC)
-        self.addViewControllerToMenu(cameraVC)
-        self.addViewControllerToMenu(postVC)
+        addViewControllerToMenu(cameraVC)
+        addViewControllerToMenu(postVC)
+        addViewControllerToMenu(pageController)
     }
     
     override func viewWillLayoutSubviews() {

@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol CameraVCDelegate: class {
+    func imageSelected(_ image: UIImage)
+}
+
 class CameraVC: UIViewController {
     
     let cameraView: CameraView = {
@@ -17,6 +21,8 @@ class CameraVC: UIViewController {
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
+    
+    weak var delegate: CameraVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +39,7 @@ class CameraVC: UIViewController {
             cameraView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
-//    
+//
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        cameraView.didPressTakeAnother()
 //    }

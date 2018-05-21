@@ -354,7 +354,7 @@
 				DEVELOPMENT_TEAM = CQ45U4X9K3;
 				INFOPLIST_FILE = FaceRecognitionIOS11/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.james.FaceRecognitionIOS11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.james.FaceRecognitionIOS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -369,7 +369,7 @@
 				DEVELOPMENT_TEAM = CQ45U4X9K3;
 				INFOPLIST_FILE = FaceRecognitionIOS11/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.james.FaceRecognitionIOS11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.james.FaceRecognitionIOS1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

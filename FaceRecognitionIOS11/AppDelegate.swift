@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController =  MainVC()//PageController(collectionViewLayout: UICollectionViewFlowLayout())
+        window?.rootViewController = PageController(collectionViewLayout: UICollectionViewFlowLayout())
         return true
     }
 

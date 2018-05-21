@@ -17,6 +17,7 @@ protocol FaceDetectorDelegate: class {
 class FaceDetector {
     
     weak var delegate: FaceDetectorDelegate?
+    
     open func highlightFaces(for source: UIImage, complete: @escaping (UIImage) -> Void) {
         var resultImage = source
         let detectFaceRequest = VNDetectFaceLandmarksRequest { (request, error) in

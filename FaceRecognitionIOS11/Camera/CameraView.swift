@@ -17,6 +17,7 @@ class CameraView: UIView  {
 
     var captureSession = AVCaptureSession()
     var stillImageOutput = AVCapturePhotoOutput()
+    
     var previewLayer: AVCaptureVideoPreviewLayer?
     var didtakePhoto = Bool()
     var isFront = false
